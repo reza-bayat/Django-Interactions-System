@@ -1,0 +1,20 @@
+<form hx-post="{% url 'interactions:toggle_bookmark' content_type.id obj.id %}" hx-swap="outerHTML" hx-target="this" class="htmx-form">
+  {% csrf_token %}
+  <button type="submit" class="flex items-center gap-1 px-3 py-1 rounded-md text-sm bg-yellow-100 text-yellow-600 bg-gray-100 text-gray-600 hover:bg-gray-200">
+    <!-- Spinner (در حین درخواست نمایش داده می‌شود) -->
+    <span class="spinner hidden inline-block w-4 h-4 border-2 border-t-transparent rounded-full animate-spin"></span>
+
+    <!-- آیکون (در حالت عادی نمایش داده می‌شود) -->
+    <span class="icon">
+      {% if bookmarked %}
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
+        </svg>
+      {% else %}
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+        </svg>
+      {% endif %}
+    </span>
+  </button>
+</form>

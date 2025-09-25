@@ -1,0 +1,50 @@
+{% load interactions_extras %}
+<!-- در بالای تمپلیت -->
+<html>
+  <head>
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- HTMX -->
+    <script src="https://unpkg.com/htmx.org@1.9.6"></script>
+    <!-- اگر از django-htmx استفاده می‌کنید -->
+    {% load django_htmx %}
+    {% django_htmx_script %}
+
+    <style>
+      /* مخفی کردن آیکون‌ها در حین درخواست */
+      .htmx-form.htmx-request .icon,
+      .htmx-form.htmx-request .rating-icon {
+        display: none !important;
+      }
+      
+      /* نمایش spinner فقط در حین درخواست */
+      .htmx-form.htmx-request .spinner {
+        display: inline-block !important;
+      }
+      
+      /* برای فرم امتیازدهی */
+      .htmx-request .rating-spinner {
+        display: inline-block !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- مثلاً برای یک پست -->
+    {% for post in posts %}
+      <div class="p-4 border rounded">
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.content }}</p>
+
+        {% like_button post %}
+        {% bookmark_button post %}
+        {% rating_widget post %}
+        {% comment %} <!-- دکمه لایک -->
+
+        <!-- دکمه بوکمارک -->
+
+        <!-- امتیازدهی -->
+        {% endcomment %}
+      </div>
+    {% endfor %}
+  </body>
+</html>
