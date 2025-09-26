@@ -126,10 +126,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 INSTALLED_APPS += [
+    'mptt',
     'django_htmx',
     
     'blog',
     'interactions',
+    'comments',
     
 ]
 

@@ -1,0 +1,17 @@
+<div id="comments-list-{{ object_id }}" class="space-y-4 mt-6">
+  {% for comment in comments %}
+    {% include "comments/comment_item.html" with node=comment content_type=content_type object_id=object_id %}
+  {% endfor %}
+</div>
+
+<!-- JS toggle فرم پاسخ -->
+<script>
+function toggleReplyForm(commentId) {
+    const container = document.getElementById('reply-section-' + commentId);
+    if(container) {
+        container.classList.toggle('hidden');
+        const textarea = container.querySelector('textarea');
+        if(textarea && !container.classList.contains('hidden')) textarea.focus();
+    }
+}
+</script>

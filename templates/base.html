@@ -1,4 +1,5 @@
 {% load interactions_extras %}
+{% load comments_extras %}
 <!-- در بالای تمپلیت -->
 <html>
   <head>
@@ -24,6 +25,14 @@
       
       /* برای فرم امتیازدهی */
       .htmx-request .rating-spinner {
+        display: inline-block !important;
+      }
+    </style>
+    <style>
+      .htmx-indicator {
+        display: none !important;
+      }
+      .htmx-request .htmx-indicator {
         display: inline-block !important;
       }
     </style>

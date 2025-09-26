@@ -1,0 +1,20 @@
+<div id="reply-section-{{ node.id }}" class="hidden mt-3">
+  <form hx-post="{% url 'comments:create' content_type.id object_id %}"
+        hx-target="#reply-message-{{ node.id }}"
+        hx-swap="innerHTML"
+        hx-on:after-request="this.reset();">
+    {% csrf_token %}
+    <input type="hidden" name="parent_id" value="{{ node.id }}">
+    <textarea name="content"
+              rows="2"
+              class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
+              placeholder="پاسخ خود را بنویسید..."></textarea>
+    <div class="mt-2">
+      <button type="submit"
+              class="px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700">
+        ارسال پاسخ
+      </button>
+    </div>
+  </form>
+  <div id="reply-message-{{ node.id }}" class="mt-2"></div>
+</div>
