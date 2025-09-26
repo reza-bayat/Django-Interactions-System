@@ -132,6 +132,7 @@ INSTALLED_APPS += [
     'blog',
     'interactions',
     'comments',
+    'attachments',
     
 ]
 
@@ -139,3 +140,6 @@ INSTALLED_APPS += [
 MIDDLEWARE += [
     'django_htmx.middleware.HtmxMiddleware',
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'

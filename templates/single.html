@@ -1,4 +1,5 @@
 {% load comments_extras %}
+{% load attachment_extras %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -31,6 +32,9 @@
 
       <!-- لیست کامنت‌ها -->
       {% comment_list post %}
+    </div>
+    <div class="border rounded-md bg-blue-600 p-4">
+      {% attachment_section post %}
     </div>
     {% comment %}
     <script>

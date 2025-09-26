@@ -1,0 +1,12 @@
+<form hx-post="{% url 'attachments:upload' content_type.id object_id %}"
+      hx-swap="outerHTML"
+      hx-target="#attachments-section"
+      hx-encoding="multipart/form-data"
+      class="mb-4">
+  {% csrf_token %}
+  {{ form.file }}
+  <button type="submit"
+          class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+    آپلود فایل
+  </button>
+</form>

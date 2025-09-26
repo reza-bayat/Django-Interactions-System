@@ -11,6 +11,7 @@ class Post(models.Model):
     likes = GenericRelation('interactions.Like')
     bookmarks = GenericRelation('interactions.Bookmark')
     ratings = GenericRelation('interactions.Rating')    
+    # attachments = GenericRelation('attachments.Attachment')    
     
     class Meta:
         verbose_name = _("Post")

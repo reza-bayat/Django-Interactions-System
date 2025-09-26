@@ -1,0 +1,22 @@
+<!-- attachments/templates/attachments/attachment_list.html -->
+{% if attachments %}
+  <div class="mt-6">
+    <h3 class="text-lg font-semibold mb-3">فایل‌های پیوست شده</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      {% for att in attachments %}
+        <div class="border rounded p-3 bg-white hover:shadow">
+          {% if att.is_image %}
+            <img src="{{ att.file.url }}" alt="{{ att.name }}" class="w-full h-24 object-cover rounded mb-2" />
+          {% else %}
+            <div class="w-full h-24 flex items-center justify-center bg-gray-100 rounded mb-2">
+              <span class="text-2xl">📄</span>
+            </div>
+          {% endif %}
+          <a href="{% url 'attachments:download' att.id %}" class="text-blue-600 hover:text-blue-800">{{ att.name }}</a>
+          {% comment %} <a href="{{ att.file.url }}" target="_blank" class="text-blue-600 hover:text-blue-800 text-sm font-medium block truncate">{{ att.name }}</a> {% endcomment %}
+          <span class="text-xs text-gray-500">{{ att.file.size|filesizeformat }}</span>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
